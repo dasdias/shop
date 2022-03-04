@@ -1,0 +1,51 @@
+html,
+body {
+	min-width: 320px;
+}
+
+html {
+	font-size: 10px;
+	line-height: 1.4;
+	// position: relative;
+}
+
+body {
+	font-size: 1.6rem; /* 10px * 1.6 = 16px */
+	font-family: 'Lato', sans-serif;
+	
+}
+* {
+	box-sizing: border-box;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+@font-face {
+	font-family: "rouble";
+	src: url("/fonts/rouble.otf") format("opentype");
+}
+
+.rub {
+	font-family: "rouble";
+}
+// .main-wrap {
+//     height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 16px;
+	padding-right: 16px;
+	
+	@media(min-width: 762px) {
+		max-width: 800px
+	}
+	@media(min-width: 1200px) {
+		max-width: 1172px;
+	}
+}
