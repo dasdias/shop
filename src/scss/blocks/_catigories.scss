@@ -1,0 +1,40 @@
+.catigories {
+	display: grid;
+	gap: 30px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 3fr ;
+	
+	// .catigories__item
+	&__item {
+		position: relative;
+		& img {
+			width: 100%;
+		}
+	}
+	// .catigories__item-long
+	&__item-long {
+		grid-column: 1/-1;
+	}
+	
+	// .catigories__title
+	&__title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(- 50%, -50%);
+		text-transform: uppercase;
+		font-family: 'Lato', sans-serif;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 19px;
+		text-align: center;
+		color: #FFFFFF;
+
+		span {
+			font-weight: 700;
+			font-size: 24px;
+			line-height: 29px;
+			color: #F16D7F;
+		}
+	}
+}
