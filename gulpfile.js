@@ -99,8 +99,8 @@ function js (callback) {
 
 gulp.task('img', function(callback){
     return gulp.src('./src/images/**/*.*')
-        .pipe(newer('./build/images/')) // проверяем сжималось ли изображение ранее, если да, то больше не сжимаем
-        .pipe(imagemin()) // сжимаем изображение
+        // .pipe(newer('./build/images/')) // проверяем сжималось ли изображение ранее, если да, то больше не сжимаем
+        // .pipe(imagemin()) // сжимаем изображение
         .pipe(gulp.dest('./build/images/')) // копируем в папку готового проекта
         
     callback();

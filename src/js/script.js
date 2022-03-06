@@ -1,19 +1,22 @@
-// 'use strict';
-// document.addEventListener('DOMContentLoaded', function () {
-//     const disp = 'Hello';
-//     const mass = ['name', 2, 'Vasya', 7]
-//     // console.log('777');
-//     // console.log(disp);
+'use strict';
+document.addEventListener('DOMContentLoaded', function () {
+    const menuCover = document.querySelector('.menu-cover');
+    const headerBurger = document.querySelector('.header-burger');
+    const menuClose = document.querySelector('.menu__close');
 
-//     const test = (mass) => {
-//         mass.forEach(element => {
-//             if (typeof(element) === 'string') {
-//                 console.log(element);                
-//             }
-//         });
+    const openMenu = () => {
+        menuCover.classList.toggle('menu-cover-hidden');
+    }
+    const closeMenu = () => {
+        menuCover.classList.add('menu-cover-hidden');
+    }
 
-//     }
-
-//     test(mass);
-
-// });
+    headerBurger.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuCover.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target.className === 'menu-cover') {
+            closeMenu();
+        }       
+    });
+});
