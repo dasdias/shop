@@ -3,13 +3,16 @@
 	gap: 32px;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, 1fr) minmax(116px, auto);
+	margin-bottom: 64px;
 	@media(min-width: 768px) {
 		gap: 19px;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 3fr ;
+		margin-bottom: 155px;
 	}
 	@media(min-width: 1200px) {
 		gap: 30px;
+		margin-bottom: 96px;
 	}
 	
 	// .catigories__item
