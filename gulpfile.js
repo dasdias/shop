@@ -17,73 +17,73 @@ const concat = require('gulp-concat'); // объяденяет файлы
 
 // Таск для сборки html из шаблонов
 gulp.task('html', function(callback) {
-    return gulp.src('./src/html/*.html')
-        .pipe(
-            plumber({
-                errorHandler: notify.onError(function (err) {
-                    return {
-                        title: "HTML include",
-                        sound: false,
-                        message: err.message
-                    };
-                })
-            })
-        )
-        .pipe(fileinclude({ prefix: '@@'}))
-        .pipe(gulp.dest('./build'))
-        .pipe(browserSync.stream());
+	return gulp.src('./src/html/*.html')
+		.pipe(
+				plumber({
+					errorHandler: notify.onError(function (err) {
+						return {
+								title: "HTML include",
+								sound: false,
+								message: err.message
+						};
+					})
+				})
+		)
+		.pipe(fileinclude({ prefix: '@@'}))
+		.pipe(gulp.dest('./build'))
+		.pipe(browserSync.stream());
 
-    callback();
+	callback();
 });
 
 
 // Таск для компиляции SCSS в CSS
 gulp.task("scss", function(callback) {
-    return gulp
-        .src("./src/scss/main.scss")
-        .pipe(
-            plumber({
-                errorHandler: notify.onError(function(err) {
-                    return {
-                        title: "Styles",
-                        sound: false,
-                        message: err.message
-                    };
-                })
-            })
-        )
-        .pipe(sourcemaps.init())
-        .pipe(sassGlob())
-        .pipe(
-            sass({
-                indentType: "tab",
-                indentWidth: 1,
-                outputStyle: "expanded"
-            })
-        )
-        .pipe(gcmq())
-        .pipe(
-            autoprefixer({
-                overrideBrowserslist: ["last 1 versions"]
-            })
-        )
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest("./build/css/"))
-        .pipe(browserSync.stream());
-    callback();
+	return gulp
+		.src("./src/scss/main.scss")
+		.pipe(
+				plumber({
+					errorHandler: notify.onError(function(err) {
+						return {
+								title: "Styles",
+								sound: false,
+								message: err.message
+						};
+					})
+				})
+		)
+		.pipe(sourcemaps.init())
+		.pipe(sassGlob())
+		.pipe(
+				sass({
+					indentType: "tab",
+					indentWidth: 1,
+					outputStyle: "expanded"
+				})
+		)
+		.pipe(gcmq())
+		// .pipe(
+		// 		autoprefixer({
+		// 			overrideBrowserslist: ["last 1 versions"]
+		// 		})
+		// )
+		.pipe(sourcemaps.write("."))
+		.pipe(gulp.dest("./build/css/"))
+		.pipe(browserSync.stream());
+	callback();
 });
 // Копирование скриптов
 function js (callback) {
-    gulp.src('./src/js/**/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(concat('all.js'))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./build/js/'))
+	gulp.src('./src/js/**/*.js')
+		.pipe(sourcemaps.init("."))
+		.pipe(babel({
+				presets: ['@babel/env']
+		}))
+		.pipe(concat('all.js'))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('./build/js/'))
 
-    callback();
+	callback();
 }
 // Сжатие изображений и копирование в папку build
 // function img (callback) {
@@ -98,12 +98,12 @@ function js (callback) {
 
 
 gulp.task('img', function(callback){
-    return gulp.src('./src/images/**/*.*')
-        // .pipe(newer('./build/images/')) // проверяем сжималось ли изображение ранее, если да, то больше не сжимаем
-        // .pipe(imagemin()) // сжимаем изображение
-        .pipe(gulp.dest('./build/images/')) // копируем в папку готового проекта
-        
-    callback();
+	return gulp.src('./src/images/**/*.*')
+		// .pipe(newer('./build/images/')) // проверяем сжималось ли изображение ранее, если да, то больше не сжимаем
+		// .pipe(imagemin()) // сжимаем изображение
+		.pipe(gulp.dest('./build/images/')) // копируем в папку готового проекта
+		
+	callback();
 }); 
 
 
@@ -113,7 +113,7 @@ gulp.task('img', function(callback){
 // gulp.task('copy:img', function(callback){
 //     return gulp.src('./src/images/**/*.*')
 //         .pipe(gulp.dest('./build/images/'))
-        
+		
 //     callback();
 // }); 
 
@@ -127,18 +127,18 @@ gulp.task('img', function(callback){
 
 // Копирование библиотек
 gulp.task('copy:libs', function(callback){
-    return gulp.src('./src/libs/**/*.*')
-    .pipe(gulp.dest('./build/libs/'))
-    
-    callback();
+	return gulp.src('./src/libs/**/*.*')
+	.pipe(gulp.dest('./build/libs/'))
+	
+	callback();
 }); 
 
 // Копирование Шрифтов
 gulp.task('copy:fonts', function(callback){
-    return gulp.src('./src/fonts/**/*.*')
-    .pipe(gulp.dest('./build/fonts/'))
-    
-    callback();
+	return gulp.src('./src/fonts/**/*.*')
+	.pipe(gulp.dest('./build/fonts/'))
+	
+	callback();
 }); 
 // exports.img = img; // экспортируем img в таск
 exports.js = js; // экспортируем js в таск
@@ -146,54 +146,54 @@ exports.js = js; // экспортируем js в таск
 
 // Слежение за HTML и CSS и обновление браузера
 gulp.task("watch", function() {
-    // Слежение за HTML и CSS и обновление браузера
-    watch(
-        // ["./build/*.html", "./build/css/**/*.css"],
-        // Следим за картинками, скриптами, шрифтами и libs и перезагружаем браузер
-        ["./build/js/**/*.*",
-            // "./build/images/**/*.*",
-            "./build/fonts/**/*.*",
-            "./build/libs/**/*.*"    
-        ],
-        gulp.parallel(browserSync.reload)
-    );
-    
-    // Слежение за SCSS и компиляция в CSS - обычный способ
-    // watch('./app/scss/**/*.scss', gulp.parallel('scss'));
-    
-    // Запуск слежения и компиляции SCSS с задержкой, для жесктих дисков HDD
-    watch("./src/scss/**/*.scss", function() {
-        setTimeout(gulp.parallel("scss"), 1000);
-    });
-    
-    // Слежение за html и сборка страниц из шаблонов
-    watch("./src/html/**/*.html", gulp.parallel("html"));
-    
-    // Слежение за картинками и скриптами и копирование в build
-    watch("./src/js/**/*.*", gulp.parallel(js));
-    watch('./src/images/**/*.*', gulp.parallel('img'));
-    // watch("./src/images/**/*.*", gulp.parallel("copy:img"))
-    // watch("./src/js/**/*.*", gulp.parallel("copy:js"));
-    watch("./src/libs/**/*.*", gulp.parallel("copy:libs"));
-    watch("./src/fonts/**/*.*", gulp.parallel("copy:fonts"));
+	// Слежение за HTML и CSS и обновление браузера
+	watch(
+		// ["./build/*.html", "./build/css/**/*.css"],
+		// Следим за картинками, скриптами, шрифтами и libs и перезагружаем браузер
+		["./build/js/**/*.*",
+				// "./build/images/**/*.*",
+				"./build/fonts/**/*.*",
+				"./build/libs/**/*.*"    
+		],
+		gulp.parallel(browserSync.reload)
+	);
+	
+	// Слежение за SCSS и компиляция в CSS - обычный способ
+	// watch('./app/scss/**/*.scss', gulp.parallel('scss'));
+	
+	// Запуск слежения и компиляции SCSS с задержкой, для жесктих дисков HDD
+	watch("./src/scss/**/*.scss", function() {
+		setTimeout(gulp.parallel("scss"), 1000);
+	});
+	
+	// Слежение за html и сборка страниц из шаблонов
+	watch("./src/html/**/*.html", gulp.parallel("html"));
+	
+	// Слежение за картинками и скриптами и копирование в build
+	watch("./src/js/**/*.*", gulp.parallel(js));
+	watch('./src/images/**/*.*', gulp.parallel('img'));
+	// watch("./src/images/**/*.*", gulp.parallel("copy:img"))
+	// watch("./src/js/**/*.*", gulp.parallel("copy:js"));
+	watch("./src/libs/**/*.*", gulp.parallel("copy:libs"));
+	watch("./src/fonts/**/*.*", gulp.parallel("copy:fonts"));
 
-    
+	
 });
 
 // Задача для старта сервера из папки app
 gulp.task("server", function() {
-    browserSync.init({
-        server: {
-            baseDir: "./build/"
-        }
-    });
+	browserSync.init({
+		server: {
+				baseDir: "./build/"
+		}
+	});
 });
 
 // Таск удаления файлов
 gulp.task('clean:build', function(callback){
-    return del('./build')
+	return del('./build')
 
-    callback();
+	callback();
 }); 
 
 
@@ -203,11 +203,11 @@ gulp.task('clean:build', function(callback){
 // Запускаем одновременно задачи server и watch
 // gulp.task("default", gulp.parallel("server", "watch", "scss", "html"));
 gulp.task(
-    "default",
-    gulp.series('clean:build',
-        // gulp.parallel('clean:build'),
-        // gulp.parallel('scss', 'html', 'copy:img','copy:js', 'copy:libs', 'copy:fonts'),
-        gulp.parallel('scss', 'html', js, 'img', 'copy:libs', 'copy:fonts'),
-        gulp.parallel("server", "watch")
-        )
+	"default",
+	gulp.series('clean:build',
+		// gulp.parallel('clean:build'),
+		// gulp.parallel('scss', 'html', 'copy:img','copy:js', 'copy:libs', 'copy:fonts'),
+		gulp.parallel('scss', 'html', js, 'img', 'copy:libs', 'copy:fonts'),
+		gulp.parallel("server", "watch")
+		)
 );

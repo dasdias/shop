@@ -6,7 +6,6 @@ body {
 html {
 	font-size: 10px;
 	line-height: 1.4;
-	// position: relative;
 }
 
 body {
@@ -27,14 +26,8 @@ img {
 }
 
 .rub {
-	font-family: "rouble";
+	font-family: "rouble", sans-serif;
 }
-// .main-wrap {
-//     height: 100vh;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-// }
 .custom-container {
 	width: 100%;
 	margin-left: auto;
