@@ -6,12 +6,13 @@ body {
 html {
 	font-size: 10px;
 	line-height: 1.4;
+	height: 100%;
 }
 
 body {
 	font-size: 1.6rem; /* 10px * 1.6 = 16px */
 	font-family: 'Lato', sans-serif;
-	
+	height: 100%;
 }
 * {
 	box-sizing: border-box;
@@ -41,4 +42,13 @@ img {
 	@media(min-width: 1200px) {
 		max-width: 1172px;
 	}
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.content-body {
+	flex-grow: 1;
 }
