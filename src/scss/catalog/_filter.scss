@@ -1,0 +1,124 @@
+.filter {
+	padding-top: 51px;
+}
+.filter-wrap {
+	position: relative;
+	max-width: 360px;
+	width: 100%;
+
+	&:hover .filter-category {
+		display: block;
+	}
+	&:hover &__header {
+		top: 13px;
+		left: 16px;
+	}
+	&:hover .filter-category__svg path {
+		fill: #EF5B70;
+	}
+
+
+	// .filter__header
+	&__header {
+		position: relative;
+		z-index: 20;
+		font-family: 'Lato', sans-serif;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 17px;
+		color: #EF5B70;
+		margin-bottom: 16px;
+	}
+}
+.filter-category {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	// max-width: 360px;
+	background-color: #fff;
+	box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+	
+	
+
+	
+	// .filter-category__svg
+	&__svg {
+		margin-left: 11px;
+	}
+
+	
+	// .filter-category__elem
+	&__elem {
+		padding: 0 16px 18px;
+		&:first-child {
+			padding-top: 45px;
+		}
+	}
+
+	
+	// .filter-category__title
+	&__title {
+		position: relative;
+		padding: 11px;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		color: #EF5B70;
+		border-bottom: 1px solid #EBEBEB;
+		// margin-bottom: 24px;
+
+		&:before {
+			content: "";
+			box-sizing: border-box;
+			position: absolute;
+			top: 0;
+			bottom: -1px;
+			left: 0;
+			width: 5px;
+			background: #EF5B70;
+		}
+	}
+	// .filter-category__group
+	&__group {
+		display: none;
+		align-items: flex-start;
+		flex-direction: column;
+		padding-left: 11px;
+		overflow: hidden;
+		transition: all 0.5s ease-in-out;
+		padding-top: 24px;
+	}
+	// .filter-category__group--active
+	&__group--active {
+		display: flex;
+	}
+	
+	// .filter-category__link
+	&__link {
+		font-family: 'Lato', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		color: #6F6E6E;
+		text-decoration: none;
+		&:not(:last-child) {
+			margin-bottom: 11px;
+		}
+		
+		&:hover, &:focus, &:active {
+			color: #6F6E6E;
+			text-decoration: none;
+		}
+	}
+}
+
+.filter-trand {}
+
+.filter-size {}
+
+.filter-price {}
