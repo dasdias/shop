@@ -32,7 +32,19 @@
 	// .shopping-cart__sipping
 	&__sipping {
 		flex-grow: 1;
-		max-width: 360px;
+		@media(min-width: 768px) {
+			max-width: 360px;
+			:first-child {
+				margin-right: 15px;
+			}
+			max-width: none;
+		}
+		@media(min-width: 1200px) {
+			max-width: 360px;
+			:first-child {
+				margin-right: 0;
+			}
+		}
 	}
 
 	// .shopping-cart__buttons
@@ -41,20 +53,29 @@
 		align-items: center;
 		justify-content: space-between;
 		margin-top: 30px;
+		margin-bottom: 48px;
+		& :first-child {
+			margin-right: 9px;
+		}
+
 		@media(min-width: 768px) {
 			margin-top: 62px;
 			max-width: 508px;
+			margin-bottom: 64px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 		@media(min-width: 1200px) {
+			margin-bottom: 0;
 			margin-top: 72px;
 			max-width: none;
 		}
 	}
 
 	// .shopping-cart__btn
-	&__btn {}
+	&__btn {
+		cursor: pointer;
+	}
 
 	&__btn,
 	&__link {
@@ -64,15 +85,19 @@
 
 		font-family: 'Lato', sans-serif;
 		font-weight: 300;
-		color: #000000;
+		color: #575757;
 		font-size: 12px;
 		line-height: 14px;
 		text-align: center;
 		background-color: #fff;
-
+		max-width: 175px;
+		width: 100%;
+		
 		@media(min-width: 768px) {
-			font-size: 14px;
+			max-width: 235px;
+			text-transform: uppercase;
 			padding: 16px 40px;
+			font-size: 14px;
 			line-height: 17px;
 		}
 	}
@@ -233,4 +258,169 @@
 		}
 	}
 
+}
+
+
+.cart-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	@media(min-width: 768px) {
+		flex-direction: row;
+		
+	}
+	@media(min-width: 1200px) {
+		flex-direction: column;
+	}
+	
+	&__address,
+	&__total {
+		@media(min-width: 768px) {
+			max-width: 360px;
+		}
+	}
+
+	// .cart-form__address
+	&__address {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 48px;
+		
+		@media(min-width: 768px) {
+			margin-bottom: 0;
+		}
+		@media(min-width: 1200px) {
+			margin-bottom: 57px;
+		}
+	}
+	// .cart-form__input
+	&__input {
+		& + & {
+			margin-top: 20px;
+		}
+	}
+	&__sity,
+	&__state,
+	&__postcode {
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		font-size: 13px;
+		line-height: 16px;
+		color: #B1B1B1;
+		padding: 13px 17px 16px;
+	}
+
+	// .cart-form__sity
+	&__sity {}
+
+	
+	// .cart-form__state
+	&__state {}
+
+	
+	// .cart-form__postcode
+	&__postcode {
+		margin-bottom: 23px;
+	}
+
+	
+	// .cart-form__btn
+	&__btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 14px;
+		border: 1px solid #A4A4A4;
+		max-width: 100px;
+		background-color: #fff;
+		text-transform: uppercase;
+		cursor: pointer;
+
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		font-size: 11px;
+		line-height: 13px;
+		color: #4A4A4A;
+	}
+
+	
+	// .cart-form__title
+	&__title {
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		text-transform: uppercase;
+		font-size: 16px;
+		line-height: 19px;
+		color: #222222;
+		margin-bottom: 20px;
+	}
+
+	
+	// .cart-form__total
+	&__total {
+		width: 100%;
+		padding: 39px 30px 42px;
+		background-color: #F5F3F3;
+		@media(min-width: 375px) {
+			padding: 39px 42px 42px;
+		}
+	}
+	
+	// .cart-form__price-wrap
+	&__price-wrap {
+		padding-bottom: 21px;
+		margin-bottom: 17px;
+		border-bottom: 1px solid #E2E2E2;
+		text-align: right;
+	}
+	
+	// .cart-form__subtotal
+	&__subtotal {
+		font-family: 'Lato', sans-serif;
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 13px;
+		color: #4A4A4A;
+		margin-bottom: 12px;
+		text-transform: uppercase;
+		span {
+			margin-left: 22px;
+			
+		}
+	}
+
+	// .cart-form__grand-total
+	&__grand-total {
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 19px;
+		color: #222222;
+		text-transform: uppercase;
+
+		span {
+			color: #F16D7F;
+			margin-left: 25px;
+		}
+	}
+
+	// .cart-form__checkout
+	&__checkout {
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 19px;
+		text-transform: uppercase;
+		color: #FFFFFF;
+		background-color: #F16D7F;
+		border: none;
+		width: 100%;
+		padding: 15px;
+		cursor: pointer;
+	}
 }

@@ -28,11 +28,29 @@
 				</div>
 			</div>
 			<div class="shopping-cart__buttons">
-				<input type="reset" class="shopping-cart__btn" value="CLEAR SHOPPING CART">
-				<a href="#!" class="shopping-cart__link">CONTINUE SHOPPING</a>
+				<input type="reset" class="shopping-cart__btn" value="Clear shopping cart" form="cart-form">
+				<a href="#!" class="shopping-cart__link">Continue shopping</a>
 			</div>
 		</div>
-		<div class="shopping-cart__sipping"></div>
+		<div class="shopping-cart__sipping">
+			<form class="cart-form" action="#" id="cart-form">
+				<div class="cart-form__address">
+					<div class="cart-form__title">Shipping adress</div>
+					<input class="cart-form__input cart-form__sity" type="text" name="sity" placeholder="Bangladesh">
+					<input class="cart-form__input cart-form__state" type="text" name="state" placeholder="State">
+					<input class="cart-form__input cart-form__postcode" type="text" name="postcode" placeholder="Postcode / Zip">
+					<input class="cart-form__btn" type="submit" value="Get a quote">
+					
+				</div>
+				<div class="cart-form__total">
+					<div class="cart-form__price-wrap">
+						<div class="cart-form__subtotal">Sub total <span>$900</span></div>
+						<div class="cart-form__grand-total">Grand total <span>$900</span></div>
+					</div>
+					<input class="cart-form__checkout" type="submit" value="Proceed to checkout">
+				</div>
+			</form>
+		</div>
 
 	</div>
 </div>
