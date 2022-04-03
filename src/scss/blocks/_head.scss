@@ -6,10 +6,6 @@
 		margin-right: 41px;
 	}
 
-	// .header__search
-	// &__search {}
-	
-	
 	// .header__login
 	&__login {
 		margin-left: 25px;
@@ -21,7 +17,6 @@
 		position: relative;
 		margin-left: 42px;
 		span {
-			position: absolute;
 			content: "";
 			position: absolute;
 			top: -5px;
@@ -34,7 +29,6 @@
 			width: 19px;
 			height: 19px;
 			background-color: #F16D7F;
-		
 		}
 	}
 
