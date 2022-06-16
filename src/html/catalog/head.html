@@ -23,7 +23,23 @@
 				</div>
 				<div class="header__cart">
 					<img src="./images/cart.png" alt="Корзина">
-					<span>5</span>
+					<span>0</span>
+					<div class="cart-block invisible" v-show="visibility">
+						<div class="cart-item">
+							<div class="cart-item__body">
+									<div class="cart-item__img"><img src="/images/card/card-1.jpg" alt="Some img"></div>
+									<div class="cart-item__desc">
+											<div class="cart-item__title">Lorem ipsum dolor sit amet.</div>
+											<div class="cart-item__quantity">Quantity: 3</div>
+											<div class="cart-item__single-price">$ 1000</div>
+									</div>
+							</div>
+							<div class="cart-item__right-block">
+									<div class="cart-item__total-price">Итого: 2000</div>
+									<button class="cart-item__del-btn" @click="$root.remove(cartItem)">&times;</button>
+							</div>
+						</div>
+        	</div>
 				</div>
 			</div>
 		</div>

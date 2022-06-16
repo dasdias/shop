@@ -9,13 +9,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-		// .catalog-form__name
-
+	max-width: 400px;
+	width: 100%;
+	
+	// .catalog-form__name
 		&__name {
+			height: 100%;
+			width: 100%;
 		}
 
+		
 		// .catalog-form__btn
-
 		&__btn {
+			background-color: transparent;
+			border: 0;
+			cursor: pointer;
 		}
 }
